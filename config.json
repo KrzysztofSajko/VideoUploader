@@ -1,3 +1,25 @@
 {
-    "videos_path": "../upload"
+    "videos_path": "../upload",
+    "thumbnails_path": "../thumbnails",
+    "port": 6969,
+    "api_service_name": "youtube",
+    "api_version": "v3",
+    "client_secrets_file": "client_secrets.json",
+    "scopes": [
+        "https://www.googleapis.com/auth/youtube.readonly",
+        "https://www.googleapis.com/auth/youtube.upload"
+    ],
+    "filename_schema": {
+        "separator": "_",
+        "items": [
+            {"name": "subject", "required": true, "suffix": ":"},
+            {"name": "lecture_type", "required": true},
+            {"name": "date", "required": true, "prefix": "[", "suffix": "]"},
+            {"name": "lecturer", "required": false, "prefix": "(", "suffix": ")"},
+            {"name": "lecture_title", "required": false, "prefix": "\"", "suffix": "\""}
+        ],
+        "change": {
+            "-": "."
+        }
+    }
 }
