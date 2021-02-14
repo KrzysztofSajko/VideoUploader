@@ -12,3 +12,4 @@ class Config(JsonParser):
     client_secrets_file: str
     scopes: list[str]
     filename_schema: dict
+    playlist: dict

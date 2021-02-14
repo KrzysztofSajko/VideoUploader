@@ -6,11 +6,13 @@ from google.auth.transport.requests import Request
 
 from config.config import Config
 
+
 def get_credentials_from_file():
-    if os.path.exists('token.pickle'):
+    if os.path.exists('../token.pickle'):
         print('Loading Credentials From File...')
-        with open('token.pickle', 'rb') as token:
+        with open('../token.pickle', 'rb') as token:
             return pickle.load(token)
+
 
 def get_credentials(config: Config):
     credentials = get_credentials_from_file()
@@ -31,7 +33,7 @@ def get_credentials(config: Config):
         credentials = flow.credentials
 
         # Save the credentials for the next run
-        with open('token.pickle', 'wb') as f:
+        with open('../token.pickle', 'wb') as f:
             print('Saving Credentials for Future Use...')
             pickle.dump(credentials, f)
     return credentials
