@@ -4,6 +4,7 @@ import os
 from typing import Optional
 
 from playlists import Playlist
+from video.video import Video
 
 
 def get_json(path: str) -> Optional[dict]:
@@ -27,7 +28,14 @@ def get_thumbnail(thumbnails_path: str, subject: str) -> str:
                                 f" in provided directory {os.path.abspath(thumbnails_path)}")
 
 
-def get_playlist(playlists: list[Playlist], subject: str) -> Optional[Playlist]:
+def get_playlist(playlists: list[Playlist], subject: str) -> Playlist:
     matches = [playlist for playlist in playlists if subject in playlist.title]
     if matches:
         return matches[0]
+    else:
+        raise ValueError(f"No corresponding playlist found for subject: \"{subject}\"")
+
+
+def mock_upload(video: Video, video_ids: dict[str, str]):
+    if video.filename in video_ids:
+        video.youtube_id = video_ids[video.filename]

@@ -2,6 +2,7 @@ import os
 from dataclasses import dataclass
 from typing import Optional
 
+from playlists import Playlist
 from .filename_processor import FileNameProcessor
 from enum import Enum, auto
 
@@ -18,8 +19,8 @@ class Video:
     filename: str
     filename_processor: FileNameProcessor
     title: str = None
-    description: str = None
-    playlist: str = None
+    description: str = ""
+    playlist: Playlist = None
     thumbnail_path: str = None
     youtube_id: str = None
     status: VideoStatus = VideoStatus.FOUND

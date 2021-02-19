@@ -5,9 +5,11 @@
     "api_service_name": "youtube",
     "api_version": "v3",
     "client_secrets_file": "client_secrets.json",
+    "token_path": "token.pickle",
     "scopes": [
         "https://www.googleapis.com/auth/youtube.readonly",
-        "https://www.googleapis.com/auth/youtube.upload"
+        "https://www.googleapis.com/auth/youtube.upload",
+        "https://www.googleapis.com/auth/youtube.force-ssl"
     ],
     "filename_schema": {
         "separator": "_",
@@ -26,5 +28,19 @@
         "part": "snippet, id",
         "mine": true,
         "maxResults": 50
-    }
+    },
+    "upload": {
+        "part": "snippet,status",
+        "body": {
+            "snippet": {
+                "categoryId": "23"
+            },
+            "status": {
+                "privacyStatus": "unlisted",
+                "madeForKids": false
+            }
+        }
+    },
+    "thumbnail_tries": 5,
+    "playlist_tries": 5
 }
