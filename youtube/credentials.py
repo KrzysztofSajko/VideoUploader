@@ -16,10 +16,10 @@ def get_credentials_from_file(token_path: str):
 
 def get_credentials(config: Config):
     credentials = get_credentials_from_file(config.token_path)
-    if credentials and credentials.expired and credentials.refresh_token:
+    if credentials and credentials.valid and credentials.expired and credentials.refresh_token:
         print('Refreshing Access Token...')
         credentials.refresh(Request())
-    if not credentials:
+    else:
         print('Fetching New Tokens...')
         flow = InstalledAppFlow.from_client_secrets_file(
             config.client_secrets_file,
