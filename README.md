@@ -1,2 +1,2 @@
 # VideoUploader
-It's a script using youtube api to automatically upload videos and thumbnails into correct playlists.
+Script using provided youtube api to automatically upload videos from specified directory along with thumbnails (if available) into designated playlist (if video matches any available playlists)
